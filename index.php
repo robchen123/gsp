@@ -27,7 +27,7 @@ if(isset($_GET['q'])){
 <body>
     <?php if($rs){ ?>
     
-    <?php else ?>
+    <?php }else{ ?>
     <div class="row">
         <div class="small-6 small-offset-3 columns">
             <div class="row collapse postfix-round">
