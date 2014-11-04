@@ -72,7 +72,7 @@ if(isset($_GET['q'])){
                 <?php print $item->htmlSnippet ;?>
             </div>
             <div class="row">
-                <a href="<?php print $item->link; ?>" target="_blank"><h5><?php print $item->displayLink; ?></h5></a>
+                <a href="<?php print $item->link; ?>" target="_blank"><h5><?php print $item->displayLink; ?>»</h5></a>
             </div>
         </div>
 	</div>
