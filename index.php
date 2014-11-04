@@ -43,13 +43,18 @@ if(isset($_GET['q'])){
             <div class="row collapse postfix-round">
                 <form id="sf" method="get">
                 <div class="small-9 columns">
-                  <input type="text" name="q" value="<?php print $q; ?>" />
-		  <input type="hidden" name="p" id="p" value="0"/>
+                  <input type="text" name="q" value="<?php print $q; ?>" placeholder="偷偷搜" />
+		          <input type="hidden" name="p" id="p" value="0"/>
                 </div>
                 <div class="small-3 columns">
                   <a href="#" class="button postfix" onclick="$('#sf').submit();return false;">Go</a>
                 </div>
                 </form>
+            </div>
+            <div class="row">
+                <div class="small-10 small-offset-1 columns summary">
+                    如果你喜欢本站，请尽一份心力，以支持本站的持续运营。支付宝账号：<strong>robchen@126.com</strong>，捐款会被用于支付本站的服务器和流量费用。
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +96,9 @@ if(isset($_GET['q'])){
     <?php
         }
     }else{ ?>
-    <p>没有结果</p>
+    <div class="row">
+        <div class="large-4 large-offset-4 columns"><?php if(isset($q)){?>没有结果<?php }else{?>请输入关键词<?php } ?></div>
+    </div>
     <?php } ?>
     <script type="text/javascript" src="lib/jquery.js"></script>
     <script type="text/javascript" src="lib/fastclick.js"></script>
