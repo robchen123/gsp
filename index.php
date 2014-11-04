@@ -33,13 +33,15 @@ if(isset($_GET['q'])){
     <script type="text/javascript" src="lib/modernizr.js"></script>
     <style type="text/css">
     .row {margin-top: 2rem;}
-    .summary {font-size: 0.8rem;}
-    h5 {font-size:0.5rem;}
+    .summary {font-size: 0.8rem;color: #333;}
+    h5 {font-size:0.5rem;line-height:2rem;}
+    .blue {color:blue}
+    .title {line-height:3rem;}
     </style> 
 </head>
 <body>
     <div class="row">
-        <div class="large-6 large-offset-3 columns">
+        <div class="large-12 columns">
             <div class="row collapse postfix-round">
                 <form id="sf" method="get">
                 <div class="small-9 columns">
@@ -64,13 +66,13 @@ if(isset($_GET['q'])){
 	<div class="row">
 		<div class="large-10 large-offset-1 columns">
             <div class="row">
-                <a href="<?php print $item->link; ?>" target="_blank"><?php print $item->htmlTitle; ?></a>
+                <a href="<?php print $item->link; ?>" target="_blank" class="title blue"><?php print $item->htmlTitle; ?></a>
             </div>
             <div class="row summary">
                 <?php print $item->htmlSnippet ;?>
             </div>
             <div class="row">
-                <h5><?php print $item->displayLink; ?></h5>
+                <a href="<?php print $item->link; ?>" target="_blank"><h5><?php print $item->displayLink; ?></h5></a>
             </div>
         </div>
 	</div>
