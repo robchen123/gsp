@@ -5,10 +5,10 @@ if(isset($_GET['q'])){
     $rs = TRUE;
     $GID = '009361176712058116504:muah0e6keec';
     $GKEY = 'AIzaSyAhab2DKOCZy5skCTa071DOVMH-NC02nbk';
-    $page = isset($_GET['p']) ? intval($_GET['p']) : 0;
-    $start = $page * 10 + 1;
-    $q = urlencode($_GET['q']);
-    $url = "https://www.googleapis.com/customsearch/v1?key={$GKEY}&cx={$GID}&num=10&q={$q}&start=$start";
+    $p = isset($_GET['p']) ? intval($_GET['p']) : 0;
+    $start = $p * 10 + 1;
+    $q = $_GET['q'];
+    $url = "https://www.googleapis.com/customsearch/v1?key={$GKEY}&cx={$GID}&num=10&q=".urlencode($q)."&start=$start";
     $ch = curl_init(); 
     curl_setopt($ch, CURLOPT_URL, $url); 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
@@ -31,9 +31,13 @@ if(isset($_GET['q'])){
     <link rel="stylesheet" href="lib/foundation-icons/foundation-icons.css" />
     <title>GSP Robin</title>
     <script type="text/javascript" src="lib/modernizr.js"></script>
+    <style type="text/css">
+    .row {margin-top: 2rem;}
+    .summary {font-size: 0.8rem;}
+    h5 {font-size:0.5rem;}
+    </style> 
 </head>
 <body>
-    <div class="row">&nbsp;</div>
     <div class="row">
         <div class="large-6 large-offset-3 columns">
             <div class="row collapse postfix-round">
@@ -57,7 +61,7 @@ if(isset($_GET['q'])){
             <div class="row">
                 <a href="<?php print $item->link; ?>" target="_blank"><?php print $item->htmlTitle; ?></a>
             </div>
-            <div class="row">
+            <div class="row summary">
                 <?php print $item->htmlSnippet ;?>
             </div>
             <div class="row">
@@ -68,17 +72,22 @@ if(isset($_GET['q'])){
     <?php 
         }
         $total = round($data->queries->nextPage[0]->totalResults, 10);
-        if($total > 1){
+	if($total > 1){
             $ps = $p - 10 > 0 ? $p - 10 : 0;
             $pe = $p + 10 > $total ? $total : $p + 10;
     ?>
+    <hr/>
+    <div class="row">
+    <div class="large-10 large-offset-1 columns">
     <ul class="pagination">
       <li class="arrow unavailable"><a href="#" class="page" data-page="<?php print $p - 1 ;?>">«</a></li>
-      <?php for($i = $ps; $i <= $pe; i ++){ ?>
-      <li <?php if($i == $p){?>class="current"<?php } ?>><a href="#" class="page" data-page="<?php print $i ?>"><?php print $i ?></a></li>
+      <?php for($i = $ps; $i <= $pe; $i ++){ ?>
+      <li <?php if($i == $p){?>class="current"<?php } ?>><a href="#" class="page" data-page="<?php print $i ?>"><?php print $i + 1 ?></a></li>
       <?php } ?>
       <li class="arrow"><a href="#" class="page" data-page="<?php print $p + 1 ;?>">»</a></li>
     </ul>
+    </div>
+    </div>
     <?php
         }
     }else{ ?>
@@ -92,8 +101,8 @@ if(isset($_GET['q'])){
     $(document).ready(function(){
         $('.page').click(function(){
             var page = $(this).data('page');
-            $('p').val(page);
-            $('sf').submit();
+            $('#p').val(page);
+            $('#sf').submit();
             return false;    
         });
     });
