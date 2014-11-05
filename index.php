@@ -116,4 +116,8 @@ if(isset($_GET['q'])){
         });
     });
     </script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6de1a8572c2573768582a357fd36bece' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
