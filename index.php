@@ -81,17 +81,15 @@ if(isset($_GET['q'])){
         $total = round($data->queries->nextPage[0]->totalResults, 10);
 	if($total > 1){
             $ps = $p - 10 > 0 ? $p - 10 : 0;
-            $pe = 10;
+            $pe = 9; 
     ?>
     <hr/>
     <div class="row">
     <div class="large-10 large-offset-1 columns">
     <ul class="pagination">
-      <li class="arrow unavailable"><a href="#" class="page" data-page="<?php print $p - 1 ;?>">«</a></li>
       <?php for($i = $ps; $i <= $pe; $i ++){ ?>
       <li <?php if($i == $p){?>class="current"<?php } ?>><a href="#" class="page" data-page="<?php print $i ?>"><?php print $i + 1 ?></a></li>
       <?php } ?>
-      <li class="arrow"><a href="#" class="page" data-page="<?php print $p + 1 ;?>">»</a></li>
     </ul>
     </div>
     </div>
