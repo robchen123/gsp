@@ -53,7 +53,7 @@ if(isset($_GET['q'])){
                 </div>
                 </form>
             </div>
-            <div class="row">
+            <div class="row" style="display:none">
                 <div class="small-10 small-offset-1 columns summary">
                     如果你喜欢本站，请尽一份心力，以支持本站的持续运营。支付宝账号：<strong>robchen@126.com</strong>，捐款会被用于支付本站的服务器和流量费用。
                 </div>
@@ -99,7 +99,7 @@ if(isset($_GET['q'])){
         }
     }else{ ?>
     <div class="row">
-        <div class="large-4 large-offset-4 columns"><?php if(isset($q)){?>没有结果<?php }else{?>请输入关键词<?php } ?></div>
+        <div class="large-4 large-offset-4 columns"><?php if(!empty($q)){?>没有结果<?php }else{?>请输入关键词<?php } ?></div>
     </div>
     <?php } ?>
     <script type="text/javascript" src="lib/jquery.js"></script>
