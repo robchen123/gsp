@@ -81,7 +81,7 @@ if(isset($_GET['q'])){
         $total = round($data->queries->nextPage[0]->totalResults, 10);
 	if($total > 1){
             $ps = $p - 10 > 0 ? $p - 10 : 0;
-            $pe = $p + 10 > $total ? $total : $p + 10;
+            $pe = 10;
     ?>
     <hr/>
     <div class="row">
@@ -109,7 +109,8 @@ if(isset($_GET['q'])){
     $(document).foundation();
     $(document).ready(function(){
         $('.page').click(function(){
-            var page = $(this).data('page');
+            var page = parseInt($(this).data('page'), 10);
+            page = Math.min(Math.max(0, page), 10);
             $('#p').val(page);
             $('#sf').submit();
             return false;    
